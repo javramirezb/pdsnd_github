@@ -2,6 +2,7 @@ import time
 import pandas as pd
 import numpy as np
 
+#Nombre de los archivos
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
@@ -88,7 +89,7 @@ def load_data(city, month, day):
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
-
+    #Encabezado
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
@@ -121,7 +122,7 @@ def time_stats(df):
 
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
-
+    #Encabezado
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
     # TO DO: display most commonly used start station
@@ -141,7 +142,7 @@ def station_stats(df):
 
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
-
+    #Encabezado
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
@@ -165,7 +166,7 @@ def trip_duration_stats(df):
 
 def user_stats(df):
     """Displays statistics on bikeshare users."""
-
+    #Encabezado
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
@@ -187,6 +188,7 @@ def user_stats(df):
 
     
 def raw_data(df):
+    #Funcion creada para ver raw_data
     decision = input('\nDo you want to see raw data? Type "yes" or "no".\n')
     if decision.lower() == 'yes' or decision.lower() == 'y':
         for i in range(len(df)):
@@ -195,6 +197,7 @@ def raw_data(df):
             if stop.lower() == 'stop':
                 break
 def main():
+    #Funcion principal, no modificar mucho
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
