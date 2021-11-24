@@ -18,6 +18,7 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
+    
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         city = input('Enter the city (Chicago, New York City or Washington): ')
@@ -29,6 +30,7 @@ def get_filters():
 
     filters_decision = input('\nDo you want to apply some filters? (Type "yes" or "no"): ')
     if filters_decision.lower() == 'yes' or filters_decision.lower() == 'y':
+
     # TO DO: get user input for month (all, january, february, ... , june)
         while True:
             month = input('\nEnter the name of the month to filter by, or "All" to apply no month filter (All, January, February, ... , June): ')
@@ -66,11 +68,14 @@ def load_data(city, month, day):
     """
     # load data file into a dataframe
     df = pd.read_csv(CITY_DATA[city])
+    
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
+
     # extract month and day of week from Start Time to create new columns
     df['month'] = pd.DatetimeIndex(df['Start Time']).month
     df['day_of_week'] = pd.DatetimeIndex(df['Start Time']).dayofweek
+
     ##print (df.head())
     # filter by month if applicable
     if month != 'all':
@@ -79,6 +84,7 @@ def load_data(city, month, day):
         month_num = months.index(month)+1 #le sumo 1 porque en la funcion de DatetimeIndex(...).month, los meses van de 1 a 12... Estos index van de 0 a 11.
         # filter by month to create the new dataframe
         df = df[df.month==month_num]
+
     # filter by day of week if applicable
     if day != 'all':
         # filter by day of week to create the new dataframe
@@ -126,6 +132,7 @@ def station_stats(df):
     #Encabezado
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
+
     # TO DO: display most commonly used start station
     print('The most commonly used start station is:',df['Start Station'].mode()[0]) #I will not going to show the filters message again (see lines 99 and 107), I think that point is clear.
 
@@ -143,6 +150,7 @@ def station_stats(df):
 
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
+
     #Encabezado
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
@@ -167,6 +175,7 @@ def trip_duration_stats(df):
 
 def user_stats(df):
     """Displays statistics on bikeshare users."""
+
     #Encabezado
     print('\nCalculating User Stats...\n')
     start_time = time.time()
